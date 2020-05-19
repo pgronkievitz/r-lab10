@@ -4,10 +4,8 @@ install.packages("tidyverse")
 library("openxlsx")
 library("tidyverse")
 
-df <- read.xlsx("Food_composition_dataset.xlsx")
-dim(df) # 236994x12 dataset
-colnames(df) # display all col names
-
+dataframe <- read.xlsx("Food_composition_dataset.xlsx")
+dim(dataframe) # 236994x12 dataset
 
 ## filter out interesting columns
 interesting_cols <- c(
@@ -20,18 +18,20 @@ interesting_cols <- c(
     "UNIT",
     "LEVEL"
 )
-df <- df[interesting_cols]
+dataframe <- dataframe[interesting_cols]
 
 ## rename columns to more convenient names
-colnames(df) <- c(
-                  "country",
-                  "product name",
-                  "category",
-                  "subcategory",
-                  "subsubcategory",
-                  "nutrient",
-                  "unit",
-                  "amount"
+colnames(dataframe) <- c(
+    "country",
+    "product name",
+    "category",
+    "subcategory",
+    "subsubcategory",
+    "nutrient",
+    "unit",
+    "amount"
 )
+dim(dataframe)
+df[sample(nrow(df), 20), ]
 
 # Generate correlations
