@@ -1,15 +1,14 @@
 # Cleanup
 install.packages("openxlsx")
-library("openxlsx")
 install.packages("tidyverse")
+library("openxlsx")
 library("tidyverse")
 
-group_by(a, )
 df <- read.xlsx("ESFA_CONSUMPTION_DASHBOARD_FORMAT.xlsx")
 dim(df) # 307084 x 97 dataset
 colnames(df) # display all col names
 interesting_columns <- c(
-    "SurveycountryDESC",
+    "SurveyscountryDESC",
     "SurveystartyearID",
     "PopulationGroupL2DESC",
     "ExposurehierarchyL1DESC",
@@ -93,6 +92,6 @@ interesting_columns <- c(
     "level"
 )
 
-df <- df[interesting_columns]
+df <- select(df, interesting_columns)
 
 # Generate correlations
