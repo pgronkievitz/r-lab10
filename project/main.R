@@ -1,8 +1,10 @@
 # Preparation
-install.packages("openxlsx")
-install.packages("tidyverse")
+# install.packages("openxlsx")
+# install.packages("tidyverse")
 library("openxlsx")
 library("tidyverse")
+library("forcats")
+library(ggplot2)
 
 dataframe <- read.xlsx("Food_composition_dataset.xlsx")
 dim(dataframe) # 236994x12 dataset
@@ -32,6 +34,25 @@ colnames(dataframe) <- c(
     "amount"
 )
 dim(dataframe)
-df[sample(nrow(df), 20), ]
+dataframe[sample(nrow(dataframe), 20), ]
+
+## convert to df then column to factors
+dataframe <- data.frame(dataframe)
+
+dataframe$product.name <- as.factor(dataframe$product.name)
+dataframe$category <- as.factor(dataframe$category)
+dataframe$country <- as.factor(dataframe$country)
+dataframe$subcategory <- as.factor(dataframe$subcategory)
+dataframe$nutrient <- as.factor(dataframe$nutrient)
+dataframe$unit <- as.factor(dataframe$unit)
+
+
+## plots
+nutrient_sum <- aggregate(amount ~ category + country, dataframe , FUN=sum)
+nutrient_mean <- aggregate(amount ~ category + country, dataframe , FUN=mean)
+
+barplot(nutrient_sum$amount, names.arg = nutrient_sum$country, col = nutrient_sum$category)
+
+barplot(nutrient_mean$amount, names.arg = nutrient_mean$country, col = nutrient_mean$category)
 
 # Generate correlations
