@@ -3,8 +3,7 @@
 # install.packages("tidyverse")
 library("openxlsx")
 library("tidyverse")
-library("forcats")
-library(ggplot2)
+library("ggplot2")
 
 dataframe <- read.xlsx("Food_composition_dataset.xlsx")
 dim(dataframe) # 236994x12 dataset
