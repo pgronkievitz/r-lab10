@@ -13,3 +13,4 @@ jobs:
             token: ${{ secrets.GITHUB_TOKEN }}
             files: release/main.pdf
         - run: pandoc -d pandoc_def.yml
+        - run: ls
