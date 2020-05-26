@@ -5,9 +5,8 @@ jobs:
     name: PANDOC
     runs-on: ubuntu-latest
     steps:
-        - run: sudo apt-get install texlive-latex-base
         - uses: actions/checkout@master
-        - uses: docker://pandoc/core:2.9
+        - uses: docker://pandoc/latex:2.9
           with:
               args: "-d pandoc_def.yml"
         - uses: meeDamian/github-release@2.0
