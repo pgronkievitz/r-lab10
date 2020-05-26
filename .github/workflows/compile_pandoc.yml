@@ -12,4 +12,5 @@ jobs:
             token: ${{ secrets.GITHUB_TOKEN }}
             files: release/main.pdf
             prerelease: true
+            tag: ${{ env.GITHUB_SHA }}
         - run: pandoc -d pandoc_def.yml
