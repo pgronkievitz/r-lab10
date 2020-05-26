@@ -5,11 +5,11 @@ jobs:
     name: PANDOC
     runs-on: ubuntu-latest
     steps:
-        - run: mkdir release
+        - run: mkdir release || echo "exists, skipping"
         - uses: actions/checkout@master
         - uses: docker://pandoc/latex:2.9
           with:
-              args: "-d pandoc_def.yml"
+              args: "pandoc --defaults=pandoc_def.yml"
         - uses: meeDamian/github-release@2.0
           with:
             tag: v0.1
