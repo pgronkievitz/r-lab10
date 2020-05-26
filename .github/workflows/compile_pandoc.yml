@@ -1,0 +1,15 @@
+name: PANDOC
+on: [push]
+jobs:
+  build:
+    name: PANDOC
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@master
+        - uses: r-lib/actions/setup-pandoc@v1
+        - uses: meeDamian/github-release@2.0
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            files: release/main.pdf
+            prerelease: true
+        - run: pandoc -d pandoc_def.yml
