@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - run: mkdir release || echo "exists, skipping"
+        - run: ls -lsha
         - uses: actions/checkout@master
         - uses: docker://pandoc/latex:2.9
           with:
