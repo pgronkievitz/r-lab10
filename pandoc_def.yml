@@ -3,23 +3,23 @@ to: pdf
 
 output-file: release/main.pdf
 input-files:
-    - doc/journal.md
-    - doc/main.md
+  - doc/journal.md
+  - doc/main.md
 standalone: true
 self-contained: true
 variables:
-    documentclass: report
+  documentclass: report
 metadata:
-    author:
-        - Patryk Gronkiewicz (164157)
-        - Piotr Krawiec (164157)
-    lang: pl
-    title: Analiza nawyków żywieniowych europejczyków
-    papersize: a4
-    abstract: |
-        Tutaj będzie znajdowało się streszczenie tego pliku, ale na ten moment jest to tylko placeholder
+  author:
+    - Patryk Gronkiewicz (164157)
+    - Piotr Krawiec (164157)
+  lang: pl
+  title: Analiza nawyków żywieniowych europejczyków
+  papersize: a4
+  abstract: |
+    Tutaj będzie znajdowało się streszczenie tego pliku, ale na ten moment jest to tylko placeholder
 
-        O, a tutaj drugi akapit streszczenia.
+    O, a tutaj drugi akapit streszczenia.
 resource-path: ["doc/res"]
 tab-stop: 4
 listings: true
