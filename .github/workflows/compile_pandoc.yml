@@ -1,5 +1,8 @@
 name: PANDOC
-on: [push]
+on:
+    push:
+        tags:
+            - v*.*
 jobs:
   build:
     name: PANDOC
@@ -12,7 +15,7 @@ jobs:
               args: pandoc -d pandoc_def.yml
         - uses: meeDamian/github-release@2.0
           with:
-            tag: v0.1
+            tag: ${{ env.RELEASE_TAG }}
             token: ${{ secrets.GITHUB_TOKEN }}
             files: release/main.pdf
             allow_override: true
