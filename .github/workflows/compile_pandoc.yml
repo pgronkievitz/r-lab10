@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@master
-        - uses: r-lib/actions/setup-pandoc@v1
-        - run: pandoc -v
-        - run: pandoc --defaults=pandoc_def.yml
+        - uses: docker://pandoc/core:2.9
+          with:
+              args: "-d pandoc_def.yml"
         - uses: meeDamian/github-release@2.0
           with:
             tag: v0.1
