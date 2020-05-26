@@ -1,9 +1,8 @@
-name: PANDOC
+name: pandoc-pre
 on:
     push:
         tags:
-            - 'v*.*'
-            - '!v*.*rc*'
+            - v*.*rc*
 jobs:
   build:
     name: PANDOC
@@ -19,3 +18,4 @@ jobs:
             tag: ${{ env.RELEASE_TAG }}
             token: ${{ secrets.GITHUB_TOKEN }}
             files: release/main.pdf
+            prerelease: true
