@@ -7,7 +7,6 @@ jobs:
     steps:
         - uses: actions/checkout@master
         - run: mkdir release || echo "exists, skipping"
-        - run: ls -lsha && echo $PWD
         - uses: docker://pandoc/latex:2.9
           with:
               args: pandoc -d pandoc_def.yml
