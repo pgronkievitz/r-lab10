@@ -1,0 +1,32 @@
+from: markdown
+to: pdf
+
+output-file: release/main.pdf
+input-files:
+    - doc/journal.md
+    - doc/main.md
+standalone: true
+self-contained: true
+variables:
+    documentclass: report
+metadata:
+    author:
+        - Patryk Gronkiewicz (164157)
+        - Piotr Krawiec (164157)
+    lang: pl
+    title: Analiza nawyków żywieniowych europejczyków
+    papersize: a4
+    abstract: |
+        Tutaj będzie znajdowało się streszczenie tego pliku, ale na ten moment jest to tylko placeholder
+
+        O, a tutaj drugi akapit streszczenia.
+resource-path: ["doc/res"]
+tab-stop: 4
+listings: true
+eol: lf
+number-sections: true
+dpi: 300
+columns: 80
+wrap: auto
+top-level-division: chapter
+toc: true
