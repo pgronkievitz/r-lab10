@@ -15,3 +15,4 @@ jobs:
             tag: v0.1
             token: ${{ secrets.GITHUB_TOKEN }}
             files: release/main.pdf
+            allow_override: true
