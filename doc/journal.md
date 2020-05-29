@@ -22,3 +22,5 @@ Została przesunięta pod wykres.
 - Problem: przy porównywaniu nazw produktów, okazało się, że nie są unikalne.
 Od teraz funkcja porównująca produkty grupuje je, a ilości wartości
 odżywczych uśrednia.
+- Stworzono funkcje porównujące względną ilość produktów w danej kategorii,
+podkategorii oraz podpodkategorii
