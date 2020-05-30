@@ -48,14 +48,6 @@ dataframe$unit <- as.factor(dataframe$unit)
 
 dataframe$amount[dataframe$unit == "Microgram/100 gram"] <- dataframe$amount[dataframe$unit == "Microgram/100 gram"] / 1000
 
-## reshape df to use separate nutrients as columns
-dataframe <- reshape2::dcast(
-    dataframe,
-    country + product_name + category + subcategory + subsubcategory ~ nutrient,
-    value.var = "amount",
-    sum
-)
-
 numeric_cols <- c(
     "Alpha-tocopherol",
     "Calcium (Ca)",
@@ -76,3 +68,12 @@ numeric_cols <- c(
 )
 
 dataframe[sample(nrow(dataframe), 10), ]
+
+df_long_to_wide <- function(df) {
+    return(reshape2::dcast(
+        dataframe,
+        country + product_name + category + subcategory + subsubcategory ~ nutrient,
+        value.var = "amount",
+        sum
+    ))
+}
