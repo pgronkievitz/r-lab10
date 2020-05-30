@@ -28,6 +28,8 @@
   składnika, zapomiałem o tym, że produkty mogą pochodzić z różnych krajów.  
   Rozwiązanie: przed sortowaniem grupuję produkty i obliczam średnią z ilości  
   danego składnika w nim.
+- Problem: barplot nie przyjmuje `heights = top$name`
+  Rozwiązanie: `heights = top[,name]` działa.
 - Problem: napisy na wykresach nachodzą na siebie ponieważ są równoległe do  
   osi.
   Rozwiązanie: ustawienie warości  `par(las = 1)`
