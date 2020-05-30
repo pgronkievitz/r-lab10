@@ -24,3 +24,16 @@
   uśrednia.
 - Stworzono funkcje porównujące względną ilość produktów w danej kategorii,
   podkategorii oraz podpodkategorii
+- Problem: po znalezieniu produktów które zawierają największą ilość danego  
+  składnika, zapomiałem o tym, że produkty mogą pochodzić z różnych krajów.  
+  Rozwiązanie: przed sortowaniem grupuję produkty i obliczam średnią z ilości  
+  danego składnika w nim.
+- Problem: napisy na wykresach nachodzą na siebie ponieważ są równoległe do  
+  osi.
+  Rozwiązanie: ustawienie warości  `par(las = 1)`
+- Problem: nazwy produktów są zbyt długie i wychodzą poza wykres.
+  Rozwiązanie: `strtrim(top$product_name, 20)` przycinam je do 20 znaków.
+- Problem: `barplot` gdy rysuje zaczyna od końca `data.frame` tzn. gdy dane  
+  posortowane były malejąco na spodzie wykresu znajdowała się wartość  
+  maksymalna.
+  Rozwiązanie: odwracam listę podawaną w argumentach z pomocą `rev`.
