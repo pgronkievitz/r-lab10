@@ -20,14 +20,30 @@ top_products_with_nutrient <- function(df, nutrient_name) {
 
 
 plot_top_products_with_nutrient <- function(nutrient_name,n_of_prod=10, save=FALSE) {
-## Zwraca wykres top n_of_prod produktów któr zawierają dany składnik
+## Rysuje wykres z produktami, które mają najwięcej nadego składnika
+#
+# nutrient_name - nazwa składnika z kategorii nutrient
+# save = FALSE - czy zapisać do pliku plots/nutrient_name.png
+#
+# NOTE: -dataframe musi być w formie 'long'
+#       -folder ./plots musi istnieć
+
+  # Przygotowanie pliku wyjściowego 
+  if(save) {
+    png(file=paste("plots/", gsub(" ", "_", nutrient_name), ".png", sep = ""),
+        width=600, 
+        height=600)
+  }
+  
   # Zbierz dane o produktach zawierających najwęcej danych składników
   top <- top_products_with_nutrient(df_long_to_wide(dataframe), 
                                     nutrient_name = nutrient_name)
   top <- top[1:n_of_prod,]
   
-  par(mar=c(2, 11, 2, 10), cex = 1, las = 1)
+  # Ustawienie marginesów wykresu, rozmiaru czcionki i orientacji napisów
+  par(mar=c(5, 11, 2, 2), cex = 1, las = 1)
 
+  # Rysowanie wykresu
   barplot(
     height = rev(top[,nutrient_name]),
     names.arg = strtrim(rev(top$product_name), 20),
@@ -36,5 +52,11 @@ plot_top_products_with_nutrient <- function(nutrient_name,n_of_prod=10, save=FAL
     main = paste("Top", n_of_prod, "produktów zawierających", nutrient_name),
     xlab = paste("Ilość",nutrient_name, "na Milligram/100 gram")
   )
+  
+  # Zapisanie wykresu do pliku
+  if(save) {
+    dev.off()
+  }
 }
-plot_top_products_with_nutrient(nutrient_name = "Alpha-tocopherol")
+
+#plot_top_products_with_nutrient(nutrient_name = "Alpha-tocopherol", save = TRUE)
