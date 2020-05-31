@@ -80,17 +80,18 @@ compare_in_cat <- function(dataframe,
     }
     prod <- dataframe[dataframe[[type]] == name &
         dataframe$nutrient == element, ]
-    prod <- aggregate(amount ~ nutrient + product_name, prod, FUN = mean)
-    barplot(amount ~ product_name, prod,
+    
+    barplot(amount ~ product_name + country, prod,
         beside = FALSE,
-        col = rainbow(length(levels(dataframe$nutrient)))
+        col = "red",
+        main = paste("Zawartość", element, "w", name, "w poszczegónych krajach"),
+        ylab = paste("Ilość", element),
+        xlab = "Kraj"
     )
-    legend("center",
-        strtrim(levels(dataframe[[type]]), 30),
-        fill = rainbow(length(levels(dataframe$nutrient))),
-        ncol = 3
-    )
+
     if (save) {
         dev.off()
     }
 }
+
+# compare_in_cat(dataframe, "Human milk", "Copper (Cu)", 2)
