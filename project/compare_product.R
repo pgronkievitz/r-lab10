@@ -62,4 +62,35 @@ compare_product <- function(dataframe, prod_name, save = FALSE) {
     }
 }
 
-# compare_product("Rice grain, brown", save = TRUE)
+compare_in_cat <- function(dataframe,
+                           name,
+                           element,
+                           nest_level = 4,
+                           save = FALSE) {
+    type <- if (nest_level == 1) {
+        "category"
+    } else if (nest_level == 2) {
+        "subcategory"
+    } else if (nest_level == 3) {
+        "subsubcategory"
+    } else if (nest_level == 4) {
+        "product_name"
+    } else {
+        return(NA)
+    }
+    prod <- dataframe[dataframe[[type]] == name &
+        dataframe$nutrient == element, ]
+    prod <- aggregate(amount ~ nutrient + product_name, prod, FUN = mean)
+    barplot(amount ~ product_name, prod,
+        beside = FALSE,
+        col = rainbow(length(levels(dataframe$nutrient)))
+    )
+    legend("center",
+        strtrim(levels(dataframe[[type]]), 30),
+        fill = rainbow(length(levels(dataframe$nutrient))),
+        ncol = 3
+    )
+    if (save) {
+        dev.off()
+    }
+}
