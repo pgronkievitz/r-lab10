@@ -50,5 +50,5 @@
   na najniższym poziomie w ramce. Rozwiązaniem okazało się przekonwertowanie
   rami do wersji szerokiej gdzie każda unikalna kombinacja pierwszych 5 koumn
   stanowi unikalny index.
-- Podczas porównywania produktów niektóre składniki nie są wyraźnie widoczne
-  na wykresach. Problem ich normalizacji nadal nie został rozwiązany.
+- Podczas porównywania produktów niektóre składniki nie są wyraźnie widoczne na
+  wykresach. Problem ich normalizacji nadal nie został rozwiązany.

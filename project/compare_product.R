@@ -72,7 +72,7 @@ compare_in_cat <- function(dataframe,
   ## poszczegónych krajach
   #
   # dataframe - ramka z danymi
-  # name - nazwa elementu z kategorii nest_level 
+  # name - nazwa elementu z kategorii nest_level
   # element - nazwa elementu z kategorii nutrient
   # nest_level - numer kategorii/subkategorii:
   #   - 1 category
@@ -93,7 +93,7 @@ compare_in_cat <- function(dataframe,
     }
     prod <- dataframe[dataframe[[type]] == name &
         dataframe$nutrient == element, ]
-    
+
     barplot(amount ~ product_name + country, prod,
         beside = FALSE,
         col = "red",
