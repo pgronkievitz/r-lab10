@@ -26,7 +26,7 @@ prod_per_country
 # Na wykresie widać że rozłożenie ilości produktów jest równomierne
 pie(prod_per_country$product_name, labels = prod_per_country$country)
 
-# Spojrzymy teraz na sumy i średnie warotości poszczególnych składników 
+# Spojrzymy teraz na sumy i średnie warotości poszczególnych składników
 # (nutrients)
 nutrient_sum <- aggregate(amount ~ category + country, dataframe, FUN = sum)
 nutrient_mean <- aggregate(amount ~ category + country, dataframe, FUN = mean)
@@ -43,6 +43,6 @@ barplot(nutrient_mean$amount,
         main = "Średnia ilość poszczególnych składników w każdym z krajów"
 )
 # Jak widać pomiędzy poszczegłonymy krajami w szerszej perspektywie nie ma
-# znaczących różnic, dlatego podczas tej analizy skupimy się głównie na 
+# znaczących różnic, dlatego podczas tej analizy skupimy się głównie na
 # posczególnych produktach i kategoriach, a także na porównywaniu ze sobą
 # pojedynczych krajów i produktach z nich.
