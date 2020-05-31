@@ -67,6 +67,18 @@ compare_in_cat <- function(dataframe,
                            element,
                            nest_level = 4,
                            save = FALSE) {
+  ## Porównuje produkt względem jednego elementu w
+  ## poszczegónych krajach
+  #
+  # dataframe - ramka z danymi
+  # name - nazwa elementu z kategorii nest_level 
+  # element - nazwa elementu z kategorii nutrient
+  # nest_level - numer kategorii/subkategorii:
+  #   - 1 category
+  #   - 2 subcategory
+  #   - 3 subsubcategory
+  #   - 4 product_name
+  # save - czy zapisać wykres
     type <- if (nest_level == 1) {
         "category"
     } else if (nest_level == 2) {
