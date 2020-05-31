@@ -1,4 +1,4 @@
-source("main.R")
+source("load_data.R")
 category_stats <- function(dataframe, category_of_products) {
     stats <- list()
     for (country in levels(dataframe$country)) {

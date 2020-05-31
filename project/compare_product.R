@@ -59,4 +59,4 @@ compare_product <- function(prod_name, save = FALSE) {
   
 }
 
-# compare_product("Rice grain, brown", save = TRUE)
+# compare_product("Rice grain, brown", save = FALSE)
