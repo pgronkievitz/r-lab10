@@ -57,6 +57,9 @@ plot_top_products_with_nutrient <- function(nutrient_name,n_of_prod=10, save=FAL
   if(save) {
     dev.off()
   }
+
+  # Przywrócenie wartości domyślnych wykresów
+  par(def.par)
 }
 
 #plot_top_products_with_nutrient(nutrient_name = "Alpha-tocopherol", save = TRUE)

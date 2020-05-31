@@ -30,10 +30,19 @@
   danego składnika w nim.
 - Problem: barplot nie przyjmuje `heights = top$name` Rozwiązanie:
   `heights = top[,name]` działa.
-- Problem: napisy na wykresach nachodzą na siebie ponieważ są równoległe do
-  osi. Rozwiązanie: ustawienie warości `par(las = 1)`
+- Problem: napisy na wykresach nachodzą na siebie ponieważ są równoległe do osi.
+  Rozwiązanie: ustawienie warości `par(las = 1)`
 - Problem: nazwy produktów są zbyt długie i wychodzą poza wykres. Rozwiązanie:
   `strtrim(top$product_name, 20)` przycinam je do 20 znaków.
 - Problem: `barplot` gdy rysuje zaczyna od końca `data.frame` tzn. gdy dane
   posortowane były malejąco na spodzie wykresu znajdowała się wartość
   maksymalna. Rozwiązanie: odwracam listę podawaną w argumentach z pomocą `rev`.
+- W celu porównania ze sobą danych przeskalowaliśmy je do wspólnej jednoski.
+  Problemem stało się to że na wykresach nie widać niektórych składników. W
+  przypadku niewyskalowania niektóre składniki dominują całkowicie wykresy.
+  Prawdopodobnym rozwiązaniem będzie znormalizowanie danych, wykresy nadal będą
+  dobrze ilustrować skład, ponieważ porównujemy te same składniki pomiędzy
+  produktami.
+- Pojawił się pomysł na plakat, w pliku main.R przeprowadzimy analizę danych a
+  najciekawsze wnioski/wykresy wstawimy do plakatu. W plakacie skupimy się na
+  stereotypach o jedzeniu z odrobiną humoru.
