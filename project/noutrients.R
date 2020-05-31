@@ -1,4 +1,4 @@
-source("main.R")
+source("load_data.R")
 
 ## plots
 
