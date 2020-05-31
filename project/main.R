@@ -52,23 +52,23 @@ barplot(nutrient_mean$amount,
 levels(dataframe$country)
 levels(dataframe$category)
 # W ramce danych znajdują się informacje z 6* krajów unii europejskiej
-# i UK. W każdym z tych krajów znajdują się produkty należące do 21 
+# i UK. W każdym z tych krajów znajdują się produkty należące do 21
 # kategorii.
 
 # Analizę znaczniemy od sprawdzenia, które kategorie zawierają najwięcej produktów
 fct_count(wide_df$category, sort = TRUE)
 # W kolumnie 'n' znajduje się ilosć produktów, które są w danej kategorii,
-# wynika z tego że najwięcej produktów należy do kategorii 
-# 'Fish, seafood, amphibians, reptiles and invertebrates' drugą kategorią, z podobnym 
-# wynikiem jest 'Meat and meat products' 
+# wynika z tego że najwięcej produktów należy do kategorii
+# 'Fish, seafood, amphibians, reptiles and invertebrates' drugą kategorią, z podobnym
+# wynikiem jest 'Meat and meat products'
 
 # Sprawdźmy zatem jakie dania znajdują się w tej kategorii
 wide_df[wide_df$category == "Fish, seafood, amphibians, reptiles and invertebrates",c(1,2)][1:10,]
 # Jak można było się domyślić zawiera ona głownie ryby i owoce morza.
-# Przyjrzyjmy się zatem jednemu z produktów bezpośrednio i porównajmy go 
+# Przyjrzyjmy się zatem jednemu z produktów bezpośrednio i porównajmy go
 # w poszczególnych krajach.
 compare_product(dataframe = dataframe, prod_name = "Freshwater fish")
 # Powyższy wykres zawiera dosyć dużo informacji, więc zaleca się otworzenie go
 # w osobnym oknie. Możemy na nim zauważyć, że 'Freshwater fish' dzieli się na 2
 # rodzaje różniace się względem zawartości Fosforu i Potasu.
-# 
+#
