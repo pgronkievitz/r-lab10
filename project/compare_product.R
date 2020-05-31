@@ -57,6 +57,8 @@ compare_product <- function(prod_name, save = FALSE) {
     dev.off()
   }
   
+  # Przywrócenie wartości domyślnych wykresów
+  par(def.par)
 }
 
 # compare_product("Rice grain, brown", save = FALSE)
