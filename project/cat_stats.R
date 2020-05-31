@@ -1,4 +1,9 @@
 category_stats <- function(dataframe, category_of_products) {
+## Zwraca listę z procentem zawartości elementu z kategorii
+## w tej kategorii
+#
+# dataframe - ramka z danymi
+# category_of_products - nazwa z elementu z 'category'
     stats <- list()
     for (country in levels(dataframe$country)) {
         all_products <- (nrow(dataframe[dataframe$country == country, ]))
@@ -9,7 +14,14 @@ category_stats <- function(dataframe, category_of_products) {
 
     return(stats)
 }
+
 subcategory_stats <- function(dataframe, category_of_products) {
+## Zwraca listę z procentem zawartości elementu z subkategorii
+## w tej subkategorii
+#
+# dataframe - ramka z danymi
+# category_of_products - nazwa z elementu z 'subcategory'
+    stats <- list()
     stats <- list()
     for (country in levels(dataframe$country)) {
         all_products <- (nrow(dataframe[dataframe$country == country, ]))
@@ -20,7 +32,13 @@ subcategory_stats <- function(dataframe, category_of_products) {
 
     return(stats)
 }
+
 subsubcategory_stats <- function(dataframe, category_of_products) {
+## Zwraca listę z procentem zawartości elementu z subsubkategorii
+## w tej subsubkategorii
+#
+# dataframe - ramka z danymi
+# category_of_products - nazwa z elementu z 'subsubcategory'
     stats <- list()
     for (country in levels(dataframe$country)) {
         all_products <- (nrow(dataframe[dataframe$country == country, ]))
@@ -32,4 +50,4 @@ subsubcategory_stats <- function(dataframe, category_of_products) {
     return(stats)
 }
 
-#subcategory_stats(dataframe, "Water based beverages")
+subcategory_stats(dataframe, "Water based beverages")
