@@ -1,79 +1,28 @@
-# Preparation
-# install.packages("openxlsx")
-# install.packages("tidyverse")
-library("openxlsx")
-library("tidyverse")
-library("ggplot2")
+## Załadowanie danych z pomocą skryptu
+source("load_data.R")
 
-dataframe <- read.xlsx("Food_composition_dataset.xlsx")
-dim(dataframe) # 236994x12 dataset
+## Załadowanie funkcji potrzebnych do przeprowadzenia analizy
+source("cat_stats.R")
+source("compare_product.R")
+source("top_products_with_nutrient.R")
 
-## filter out interesting columns
-interesting_cols <- c(
-    "COUNTRY",
-    "efsaprodcode2_recoded",
-    "level1",
-    "level2",
-    "level3",
-    "NUTRIENT_TEXT",
-    "UNIT",
-    "LEVEL"
-)
-dataframe <- dataframe[interesting_cols]
-
-## rename columns to more convenient names
-colnames(dataframe) <- c(
-    "country",
-    "product_name",
-    "category",
-    "subcategory",
-    "subsubcategory",
-    "nutrient",
-    "unit",
-    "amount"
-)
+## Wyświetlenie informacji o danych
 dim(dataframe)
-dataframe[sample(nrow(dataframe), 20), ]
+# Zawiera ona 236994 obserwacji (wierszy) oraz 8 kolumn
 
-## convert to df then column to factors
-dataframe <- data.frame(dataframe)
+# Kolumny te wskazują na strukturę danych umieszczonych w ramce.
+# Każdy kraj zawiera listę produktów, każdy z tych produktów należy
+# do swojej kategorii -> subkategorii -> subsubkategorii i każdy
+# produkt zawiera listę nutrients, a każdy nutrient zawiera
+# informacje o ilości i jednostce (amount i unit)
+colnames(dataframe)
 
-dataframe$product_name <- as.factor(dataframe$product_name)
-dataframe$category <- as.factor(dataframe$category)
-dataframe$country <- as.factor(dataframe$country)
-dataframe$subcategory <- as.factor(dataframe$subcategory)
-dataframe$subsubcategory <- as.factor(dataframe$subsubcategory)
-dataframe$nutrient <- as.factor(dataframe$nutrient)
-dataframe$unit <- as.factor(dataframe$unit)
+# Jak widać każdy kraj posiada powyżej 30000 produktów
+# jest to duża ilość, która pozwoli nam porównać te kraje
+# względem siebie
+prod_per_country <- aggregate(product_name ~ country, dataframe, FUN=length)
+prod_per_country
 
-dataframe$amount[dataframe$unit == "Microgram/100 gram"] <- dataframe$amount[dataframe$unit == "Microgram/100 gram"] / 1000
+# Na wykresie widać że rozłożenie ilości produktów jest równomierne
+pie(prod_per_country$product_name, labels = prod_per_country$country)
 
-numeric_cols <- c(
-    "Alpha-tocopherol",
-    "Calcium (Ca)",
-    "Copper (Cu)",
-    "Magnesium (Mg)",
-    "niacin equivalents, total",
-    "Phosphorus (P)",
-    "Potassium (K)",
-    "riboflavin",
-    "thiamin",
-    "Total iron",
-    "Total Selenium",
-    "vitamin B-12",
-    "vitamin B-6, total",
-    "vitamin E; alpha-tocopherol equiv from E vitamer activities",
-    "vitamin K, total",
-    "Zinc (Zn)"
-)
-
-dataframe[sample(nrow(dataframe), 10), ]
-
-df_long_to_wide <- function(df) {
-    return(reshape2::dcast(
-        dataframe,
-        country + product_name + category + subcategory + subsubcategory ~ nutrient,
-        value.var = "amount",
-        sum
-    ))
-}
