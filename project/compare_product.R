@@ -43,7 +43,7 @@ compare_product <- function(dataframe, prod_name, save = FALSE) {
     )
 
     ## Ustawienie marginesu legendy i skali tekstu
-    par(mar = c(0, 0, 0, 0), cex = 1.1)
+    par(mar = c(0, 0, 0, 0), cex = 0.5)
 
     ## Tworzy nowy pusty wykres tak, aby legenda pojawiła
     ## się w miejscu 3 3, pod wykresami
@@ -51,7 +51,7 @@ compare_product <- function(dataframe, prod_name, save = FALSE) {
 
     ## Rysowanie legendy
     legend("center",
-        strtrim(levels(dataframe$nutrient), 30),
+        strtrim(levels(dataframe$nutrient), 20),
         fill = rainbow(length(levels(dataframe$nutrient))),
         ncol = 3
     )
@@ -61,6 +61,7 @@ compare_product <- function(dataframe, prod_name, save = FALSE) {
         dev.off()
     }
 }
+compare_product(dataframe = dataframe, prod_name = "Freshwater fish")
 
 compare_in_cat <- function(dataframe,
                            name,

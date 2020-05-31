@@ -46,3 +46,9 @@
 - Pojawił się pomysł na plakat, w pliku main.R przeprowadzimy analizę danych a
   najciekawsze wnioski/wykresy wstawimy do plakatu. W plakacie skupimy się na
   stereotypach o jedzeniu z odrobiną humoru.
+- Bezpośrednio z ramki danych nie można zliczać produktów ponieważ, nie są one
+  na najniższym poziomie w ramce. Rozwiązaniem okazało się przekonwertowanie
+  rami do wersji szerokiej gdzie każda unikalna kombinacja pierwszych 5 koumn
+  stanowi unikalny index.
+- Podczas porównywania produktów niektóre składniki nie są wyraźnie widoczne
+  na wykresach. Problem ich normalizacji nadal nie został rozwiązany.

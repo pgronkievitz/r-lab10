@@ -17,11 +17,11 @@ dim(dataframe)
 # informacje o ilości i jednostce (amount i unit)
 colnames(dataframe)
 
-# Jak widać każdy kraj posiada powyżej 30000 produktów
+# Jak widać każdy kraj posiada powyżej 2300 produktów
 # jest to duża ilość, która pozwoli nam porównać te kraje
 # względem siebie
-prod_per_country <- aggregate(product_name ~ country, dataframe, FUN=length)
-prod_per_country
+wide_df <- df_long_to_wide(dataframe)
+prod_per_country <- aggregate(product_name ~ country, wide_df, FUN=length)
 
 # Na wykresie widać że rozłożenie ilości produktów jest równomierne
 pie(prod_per_country$product_name, labels = prod_per_country$country)
@@ -56,5 +56,19 @@ levels(dataframe$category)
 # kategorii.
 
 # Analizę znaczniemy od sprawdzenia, które kategorie zawierają najwięcej produktów
+fct_count(wide_df$category, sort = TRUE)
+# W kolumnie 'n' znajduje się ilosć produktów, które są w danej kategorii,
+# wynika z tego że najwięcej produktów należy do kategorii 
+# 'Fish, seafood, amphibians, reptiles and invertebrates' drugą kategorią, z podobnym 
+# wynikiem jest 'Meat and meat products' 
 
-
+# Sprawdźmy zatem jakie dania znajdują się w tej kategorii
+wide_df[wide_df$category == "Fish, seafood, amphibians, reptiles and invertebrates",c(1,2)][1:10,]
+# Jak można było się domyślić zawiera ona głownie ryby i owoce morza.
+# Przyjrzyjmy się zatem jednemu z produktów bezpośrednio i porównajmy go 
+# w poszczególnych krajach.
+compare_product(dataframe = dataframe, prod_name = "Freshwater fish")
+# Powyższy wykres zawiera dosyć dużo informacji, więc zaleca się otworzenie go
+# w osobnym oknie. Możemy na nim zauważyć, że 'Freshwater fish' dzieli się na 2
+# rodzaje różniace się względem zawartości Fosforu i Potasu.
+# 
