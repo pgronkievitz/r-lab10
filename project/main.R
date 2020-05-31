@@ -44,5 +44,17 @@ barplot(nutrient_mean$amount,
 )
 # Jak widać pomiędzy poszczegłonymy krajami w szerszej perspektywie nie ma
 # znaczących różnic, dlatego podczas tej analizy skupimy się głównie na
-# posczególnych produktach i kategoriach, a także na porównywaniu ze sobą
+# poszczególnych produktach i kategoriach, a także na porównywaniu ze sobą
 # pojedynczych krajów i produktach z nich.
+
+# Naszą analizę zaczniemy od najwyższego poziomu, czyli od poszczególnych
+# krajów i kategorii produktów jakie się w nich znajdują
+levels(dataframe$country)
+levels(dataframe$category)
+# W ramce danych znajdują się informacje z 6* krajów unii europejskiej
+# i UK. W każdym z tych krajów znajdują się produkty należące do 21 
+# kategorii.
+
+# Analizę znaczniemy od sprawdzenia, które kategorie zawierają najwięcej produktów
+
+
