@@ -67,8 +67,36 @@ wide_df[wide_df$category == "Fish, seafood, amphibians, reptiles and invertebrat
 # Jak można było się domyślić zawiera ona głownie ryby i owoce morza.
 # Przyjrzyjmy się zatem jednemu z produktów bezpośrednio i porównajmy go
 # w poszczególnych krajach.
-compare_product(dataframe = dataframe, prod_name = "Freshwater fish")
+compare_product(df = dataframe, prod_name = "Freshwater fish")
 # Powyższy wykres zawiera dosyć dużo informacji, więc zaleca się otworzenie go
-# w osobnym oknie. Możemy na nim zauważyć, że 'Freshwater fish' dzieli się na 2
-# rodzaje różniace się względem zawartości Fosforu i Potasu.
+# w osobnym oknie. 
+
+# Możemy na nim zauważyć, że 'Freshwater fish' dzieli się na 3
+# rodzaje różniące się względem ilości poszczególnych składników w nich zawartych.
+# Jednak jak wynika z wykresu po lewej wspólną cechą charakterystyczną tego 
+# produktu jest wysoka zawartośc fosforu i patasu.
+# Sprawdzmy zatem jak ta warość prezentuje się na tle pozostałych produktów.
+# Aby to zrobić obliczymy procent produktów który ma większą zawartość
+# fosforu i cynku.
+
+# Dla porównania obliczymy średnią ilość fosforu i potasu w tym produkcie.
+sred_fosfor <- mean(dataframe[dataframe$product_name == "Freshwater fish" & dataframe$nutrient == "Phosphorus (P)","amount"])
+sred_potas <- mean(dataframe[dataframe$product_name == "Freshwater fish" & dataframe$nutrient == "Potassium (K)","amount"])
+
+# Około 26 % produktów posiada więcej fosforu
+dim(dataframe[dataframe$nutrient == "Phosphorus (P)" & dataframe$amount >= sred_fosfor,])[1] / dim(dataframe[dataframe$nutrient == "Phosphorus (P)",])[1]
+
+# Około 29 % produktów posiada więcej potasu
+dim(dataframe[dataframe$nutrient == "Potassium (K)" & dataframe$amount >= sred_potas,])[1] / dim(dataframe[dataframe$nutrient == "Potassium (K)",])[1]
+
+
+
+# Pierwszy rodzaj to Finlandia, Holandia, Szwecja.
+# Ryba z tych krajów zawiera najwięcej wapnia, witamin B, B1 oraz cynku.
+
+# Drugi to Niemcy, Francja i UK
+# 
+# 
+# Trzeci to Włochy
+# 
 #

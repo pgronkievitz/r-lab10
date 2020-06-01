@@ -70,7 +70,7 @@ compare_product <- function(df, prod_name, save = FALSE) {
         dev.off()
     }
 }
-#compare_product(df = d, prod_name = "Freshwater fish")
+# compare_product(df = dataframe, prod_name = "Freshwater fish")
 
 compare_in_cat <- function(dataframe,
                            name,
@@ -114,6 +114,20 @@ compare_in_cat <- function(dataframe,
     if (save) {
         dev.off()
     }
+}
+
+compare_percent_of_nutrient <- function(df, prod_name, nutrient) {
+  ## Oblicza procent produktów które zawierają więcej danego składnika
+  ## niż średnia prod_name
+  #
+  # df - ramka z danymi
+  # prod_name - nazwa produktu
+  # nutrient - nazwa składnika do obliczania procentów
+  
+  sred <- mean(dataframe[dataframe$product_name == prod_name & dataframe$nutrient == nutrient])
+  
+  
+  return(dim(dataframe[dataframe$nutrient == nutrient & dataframe$amount >= sred,])[1] / dim(dataframe[dataframe$nutrient == nutrient,])[1])
 }
 
 normalize <- function(x) {
