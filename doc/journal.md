@@ -8,6 +8,17 @@
 - Ustawiona została automatyczna kompilacja plików `*.md` do pliku PDF. Pozwala
   to na szybszą edycję, bez konieczności instalowania dodatkowego
   oprogramowania. Do tego celu został użyty `pandoc`.
+- *Problem*: Pojawiła się trudność w konfiguracji automatyzacji. *Rozwiązanie*:
+  Wystarczająca okazała się zmiana kolejności wykonywania akcji w systemie.
+  `GitHub Actions` wykonuje akcje kolejno, nawet przed pobraniem repozytorium.
+  Zmieniono numer zadania pobrania repozytorium na 1, co poskutkowało poprawą
+  kompilacja plików PDF.
+- *Problem*: automatyzacja działała przy każdej zmianie w plikach.
+  *Rozwiązanie*: Ustawiono, aby kompilacja odbywała się tylko po uprzednim
+  nadaniu tagu w formacie `vX.Y` lub `vX.Y-pre`, gdzie `X` oraz `Y` są kolejnymi
+  numerami wersji (główna i drobna zmiana). Dopisek `-pre` powoduje dodanie
+  zmiany jako jeszcze niegotowej i niepełnej. Służy głównie do testowania
+  nowych wersji dokumentu.
 - W ramach jeszcze większych uproszczeń w tworzeniu sprawozdania stworzony
   został plik odpowiadający za konfigurację `pandoc`. Nie trzeba już podawać
   dodatkowych argumentów poza nazwą pliku konfiguracyjnego.
