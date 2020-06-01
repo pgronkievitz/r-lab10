@@ -87,3 +87,9 @@
   pozostawionej w oryginalnym formacie.
   *Rozwiązanie*: stworzona została funkcja, która automatycznie konwertuje
   oryginalną ramkę na wersję szeroką.
+- *Problem*: Bezpośrednio z ramki danych nie można zliczać produktów, ponieważ
+  nie są one na najniższym poziomie w ramce. 
+  *Rozwiązanie*: przekonwertowanie ramki do wersji szerokiej, gdzie każda
+  unikalna kombinacja pierwszych 5 koumn stanowi unikalny index.
+- Podczas porównywania produktów niektóre składniki nie są wyraźnie widoczne na
+  wykresach. Problem ich normalizacji nadal nie został rozwiązany.
