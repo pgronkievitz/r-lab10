@@ -16,8 +16,8 @@
   kompilacja plików PDF.
 - *Problem*: automatyzacja działała przy każdej zmianie w plikach.
   *Rozwiązanie*: Ustawiono, aby kompilacja odbywała się tylko po uprzednim
-  nadaniu tagu w formacie `vX.Y` lub `vX.Y-pre`, gdzie `X` oraz `Y` są kolejnymi
-  numerami wersji (główna i drobna zmiana). Dopisek `-pre` powoduje dodanie
+  nadaniu tagu w formacie `vX.Y` lub `vX.Y-rcZ`, gdzie `X` oraz `Y` są kolejnymi
+  numerami wersji (główna i drobna zmiana). Dopisek `-rc` powoduje dodanie
   zmiany jako jeszcze niegotowej i niepełnej. Służy głównie do testowania
   nowych wersji dokumentu.
 - W ramach jeszcze większych uproszczeń w tworzeniu sprawozdania stworzony
