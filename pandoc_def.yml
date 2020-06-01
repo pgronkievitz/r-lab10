@@ -4,7 +4,7 @@ to: pdf
 output-file: release/main.pdf
 input-files:
     - doc/journal.md
-    - doc/main.md
+    - doc/description.md
     - doc/conclusions.md
 standalone: true
 self-contained: true
