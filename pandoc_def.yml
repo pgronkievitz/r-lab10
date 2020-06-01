@@ -3,23 +3,23 @@ to: pdf
 
 output-file: release/main.pdf
 input-files:
-    - doc/journal.md
-    - doc/main.md
+  - doc/journal.md
+  - doc/main.md
 standalone: true
 self-contained: true
 variables:
-    documentclass: report
+  documentclass: report
 metadata:
-    author:
-        - Patryk Gronkiewicz (164157)
-        - Piotr Krawiec (164157)
-    lang: pl
-    title: Analiza nawyków żywieniowych europejczyków
-    papersize: a4
-    abstract: |
-        Projekt ma na celu ukazanie jak bardzo odżywcze są poszczególne potrawy/napoje,
-        jak wiele potraw/napojów jest dostępnych w danym kraju, a także jak popularne są
-        względem pozostałych.
+  author:
+    - Patryk Gronkiewicz (164157)
+    - Piotr Krawiec (164157)
+  lang: pl
+  title: Analiza nawyków żywieniowych europejczyków
+  papersize: a4
+  abstract: |
+    Projekt ma na celu ukazanie jak bardzo odżywcze są poszczególne potrawy/napoje,
+    jak wiele potraw/napojów jest dostępnych w danym kraju, a także jak popularne są
+    względem pozostałych.
 resource-path: ["doc/res"]
 tab-stop: 4
 listings: true
