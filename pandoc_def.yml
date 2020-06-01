@@ -17,9 +17,9 @@ metadata:
     title: Analiza nawyków żywieniowych europejczyków
     papersize: a4
     abstract: |
-        Tutaj będzie znajdowało się streszczenie tego pliku, ale na ten moment jest to tylko placeholder
-
-        O, a tutaj drugi akapit streszczenia.
+        Projekt ma na celu ukazanie jak bardzo odżywcze są poszczególne potrawy/napoje,
+        jak wiele potraw/napojów jest dostępnych w danym kraju, a także jak popularne są
+        względem pozostałych.
 resource-path: ["doc/res"]
 tab-stop: 4
 listings: true
