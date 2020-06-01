@@ -128,5 +128,22 @@ for(nutrient in levels(dataframe$nutrient)) {
 # Ale tutaj nasz zapał został ostudzony, ponieważ okazało się, że pomidory mają najmniej witaminy B-12
 # wśród wszytkich dostępnych produktów. Pomidory, nie są w żadnej kategorii w top 10%.
 
+## Na pozycji 4, znajduje się kategoria: Grains and grain-based products
+wide_df[wide_df$category == "Grains and grain-based products",c(1,2)][sample(1:1000, size=10),]
+# Tutaj znowu przyczepimy się Włoch. Tym razem sprawdzimy czy włochy mają więcej
+# potraw opartych o mąkę oraz czy posiadają więcej dań opartych o makarony. Funkcja
+# category_stats i jej podobne, zwraca procentowy udział kategorii we wszystkich produktach.
+category_stats(dataframe = dataframe, category_of_products = "Grains and grain-based products")
+# W samej kategorii produktów pszennych, Włochy się nie wyróżniają. Sprawdźmy teraz
+# podkategorie, które mogą doprowadzić nas do odpowiedzi: "Pasta, doughs and similar products",
 
-
+subcategory_stats(dataframe = dataframe, category_of_products = "Pasta, doughs and similar products")
+# Niestety, Włochy ponownie nie wyróżniają się na tle innych krajów.
+subcategory_stats(dataframe = dataframe, category_of_products = "Wine and wine-like drinks")
+# Z ciekawości sprawdziłem też podkategorię Wina i okazało się, że wyraźnie widać tu róźnicę
+# między krajami Południa i Północy. Kraje takie jak Szwecja i Finlandia posiadają dużo mniejszy
+# udział procentowy ty produktów. Upewnijmy sie jednak, czy nie wynika on z innych przyczyn.
+wina <- aggregate(product_name ~ country + subcategory, dataframe, FUN=length)
+wina <- wina[wina$subcategory == "Wine and wine-like drinks",c(1,3)]
+wina[order(wina$product_name, decreasing = TRUE),]
+# Okazuje się, że nie. Faktycznie w Szwecji i Finlandii znajduje się mniej produktów tego typu.

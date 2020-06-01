@@ -50,4 +50,4 @@ subsubcategory_stats <- function(dataframe, category_of_products) {
     return(stats)
 }
 
-subcategory_stats(dataframe, "Water based beverages")
+#subcategory_stats(dataframe, "Water based beverages")

@@ -76,7 +76,7 @@ compare_product <- function(df, prod_name, save = FALSE, log = "") {
         dev.off()
     }
 }
-compare_product(df = dataframe, prod_name = "Freshwater fish")
+#compare_product(df = dataframe, prod_name = "Freshwater fish")
 
 compare_in_cat <- function(dataframe,
                            name,
