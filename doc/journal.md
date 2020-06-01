@@ -95,3 +95,7 @@
   w skali od 0 do 1 względem pozostałych. 0 - składnik nie występuje, 1 
   produkt zawiera najwięcej danego składnika w porównaniu z tym samym produktem
   z innych krajów.
+- _Problem_:Dane po znormalizowaniu nie oddają udziału objętościowego 
+  poszczególnych składników. _Rozwiązanie_: Z dwóch generowanych wykresów, wykres
+  po lewej zawiera dane przed normalizacją, a po prawej po. W ten sposób widać
+  zarówno udział składników jak i ich objętość.
