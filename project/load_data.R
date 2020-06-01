@@ -67,6 +67,12 @@ numeric_cols <- c(
     "Zinc (Zn)"
 )
 
+# Cast and melt df to fill missing rows
+dataframe <- df_long_to_wide(dataframe)
+dataframe <- melt(dataframe)
+colnames(dataframe)[6:7] = c("nutrient", "amount")
+
+
 dataframe[sample(nrow(dataframe), 10), ]
 
 df_long_to_wide <- function(df) {
