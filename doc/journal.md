@@ -99,3 +99,8 @@
   poszczególnych składników. _Rozwiązanie_: Z dwóch generowanych wykresów, wykres
   po lewej zawiera dane przed normalizacją, a po prawej po. W ten sposób widać
   zarówno udział składników jak i ich objętość.
+- _Problem_: Powrócił problem kolorowania wykresów. Przez braki danych, wektor 
+  kolorów zawija się po złych wierszach. _Rozwiązanie_: cast i melt ramki danych.
+  Najpierw zamieniam jedną kolumnę typu "Factor" na wiele kolumn (format wide),
+  a następnie przywracam ją do pierwotnej formy. W ten sposób każdy produkt uzyska
+  każdy składnik (braki uzupełnia się zerami). Teraz zawijanie działa prawidłowo.
