@@ -1,4 +1,4 @@
-compare_product <- function(dataframe, prod_name, save = FALSE) {
+compare_product <- function(df, prod_name, save = FALSE) {
     ## Porównuje dwa produkty
     #
     # prod_name - nazwa produktu z kategorii product_name
@@ -10,8 +10,13 @@ compare_product <- function(dataframe, prod_name, save = FALSE) {
     #       uśredniona
 
     ## Wczytanie informacji o produkcie
-    prod <- dataframe[dataframe$product_name == prod_name, ]
+    prod <- df[df$product_name == prod_name, ]
     prod <- aggregate(amount ~ nutrient + country, prod, FUN = mean)
+    
+    # Znormalizowanie danych
+    for(nutrient in levels(prod$nutrient)) {
+      prod[prod$nutrient == nutrient,]$amount <- normalize(prod[prod$nutrient == nutrient,]$amount)
+    }
 
     ## Przygowanie pliku wyjściowego dla wykresu
     if (save) {
@@ -33,13 +38,13 @@ compare_product <- function(dataframe, prod_name, save = FALSE) {
     ## Wykres po lewej
     barplot(amount ~ nutrient + country, prod,
         beside = TRUE,
-        col = rainbow(length(levels(dataframe$nutrient)))
+        col = rainbow(length(levels(df$nutrient)))
     )
 
     ## Wykres po prawej
     barplot(amount ~ nutrient + country, prod,
         beside = FALSE,
-        col = rainbow(length(levels(dataframe$nutrient)))
+        col = rainbow(length(levels(df$nutrient)))
     )
 
     ## Ustawienie marginesu legendy i skali tekstu
@@ -51,8 +56,8 @@ compare_product <- function(dataframe, prod_name, save = FALSE) {
 
     ## Rysowanie legendy
     legend("center",
-        strtrim(levels(dataframe$nutrient), 20),
-        fill = rainbow(length(levels(dataframe$nutrient))),
+        strtrim(levels(df$nutrient), 20),
+        fill = rainbow(length(levels(df$nutrient))),
         ncol = 3
     )
 
@@ -61,7 +66,7 @@ compare_product <- function(dataframe, prod_name, save = FALSE) {
         dev.off()
     }
 }
-compare_product(dataframe = dataframe, prod_name = "Freshwater fish")
+compare_product(df = dataframe, prod_name = "Freshwater fish")
 
 compare_in_cat <- function(dataframe,
                            name,
@@ -105,6 +110,10 @@ compare_in_cat <- function(dataframe,
     if (save) {
         dev.off()
     }
+}
+
+normalize <- function(x) {
+  return ((x - min(x)) / (max(x) - min(x)))
 }
 
 # compare_in_cat(dataframe, "Human milk", "Copper (Cu)", 2)
