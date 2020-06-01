@@ -147,3 +147,26 @@ wina <- aggregate(product_name ~ country + subcategory, dataframe, FUN=length)
 wina <- wina[wina$subcategory == "Wine and wine-like drinks",c(1,3)]
 wina[order(wina$product_name, decreasing = TRUE),]
 # Okazuje się, że nie. Faktycznie w Szwecji i Finlandii znajduje się mniej produktów tego typu.
+
+## Pod numerkiem 5 znajduą się: Milk and dairy products
+wide_df[wide_df$category == "Milk and dairy products",c(1,2)][sample(1:1000, size=10),]
+
+# Podobno produkty mleczne znane są z wysokiej zawartości Wapnia.
+# Ale czy tak jest naprawdę? Zaraz to sprawdzimy na przykładzie mleka.
+compare_product(df = dataframe, prod_name = "Cow milk, whole")
+# Na pierwszy rzut oka, zawartość wapnia jest wysoka, niemal dorównuje
+# takim składnikom jak fosfor lub wapń. Sprawdźmy jednak jak ten wapń prezentuje
+# się na tle innych produktów.
+for(nutrient in levels(dataframe$nutrient)) {
+  cat(compare_percent_of_nutrient(df = dataframe, prod_name = "Cow milk, whole", nutrient = nutrient), nutrient, fill = TRUE)
+}
+# Mleko znajduje się w top 14% procent, jest to dużo, ale nie tyle ile się
+# spodziewaliśmy. Porównajmy ilość wapnia pomiędzy nabiałem a innymi kategoriami.
+for(category in levels(dataframe$category)) {
+  cat(mean(dataframe[dataframe$category == category & dataframe$nutrient == "Calcium (Ca)", "amount"]), category, fill = TRUE)
+}
+# Na szczęście mogę śmiało powiedzieć, że teza została potwierdzona. Produkty mleczne zawierają znacznie
+# więcej wapnia od innych i to średnio około dwukrotnie. 
+
+# Na tym zakończymy porównywanie kategorii i wrócimy do korzeni.
+
