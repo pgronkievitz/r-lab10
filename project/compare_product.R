@@ -12,7 +12,7 @@ compare_product <- function(df, prod_name, save = FALSE) {
     ## Wczytanie informacji o produkcie
     prod <- df[df$product_name == prod_name, ]
     prod <- aggregate(amount ~ nutrient + country, prod, FUN = mean)
-    
+    bprod <- prod
 
 
     ## Przygowanie pliku wyjściowego dla wykresu
@@ -70,7 +70,7 @@ compare_product <- function(df, prod_name, save = FALSE) {
         dev.off()
     }
 }
-compare_product(df = dataframe, prod_name = "Freshwater fish")
+#compare_product(df = d, prod_name = "Freshwater fish")
 
 compare_in_cat <- function(dataframe,
                            name,
