@@ -13,10 +13,7 @@ compare_product <- function(df, prod_name, save = FALSE) {
     prod <- df[df$product_name == prod_name, ]
     prod <- aggregate(amount ~ nutrient + country, prod, FUN = mean)
     
-    # Znormalizowanie danych
-    for(nutrient in levels(prod$nutrient)) {
-      prod[prod$nutrient == nutrient,]$amount <- normalize(prod[prod$nutrient == nutrient,]$amount)
-    }
+
 
     ## Przygowanie pliku wyjściowego dla wykresu
     if (save) {
@@ -38,13 +35,20 @@ compare_product <- function(df, prod_name, save = FALSE) {
     ## Wykres po lewej
     barplot(amount ~ nutrient + country, prod,
         beside = TRUE,
-        col = rainbow(length(levels(df$nutrient)))
+        col = rainbow(length(levels(df$nutrient))),
+        main = paste("Udział objętościowy składników w", prod_name)
     )
+    
+    # Znormalizowanie danych
+    for(nutrient in levels(prod$nutrient)) {
+      prod[prod$nutrient == nutrient,]$amount <- normalize(prod[prod$nutrient == nutrient,]$amount)
+    }
 
     ## Wykres po prawej
     barplot(amount ~ nutrient + country, prod,
         beside = FALSE,
-        col = rainbow(length(levels(df$nutrient)))
+        col = rainbow(length(levels(df$nutrient))),
+        main = paste("Istnienie danego składniku w", prod_name, "pomiędzy krajami europy.")
     )
 
     ## Ustawienie marginesu legendy i skali tekstu
