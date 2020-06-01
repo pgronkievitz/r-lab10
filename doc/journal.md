@@ -106,7 +106,7 @@
   produkt uzyska każdy składnik (braki uzupełnia się zerami). Teraz zawijanie
   działa prawidłowo.
 - Składniki, które występują w niewielkich ilościach nie są dobrze widoczne na
-  wykresie po lewej stronie generowanym przez funkcję `compare_product`. 
-  Nie mogłem użyć skali logarytmicznej, ponieważ ilość niektórych składników 
+  wykresie po lewej stronie generowanym przez funkcję `compare_product`. Nie
+  mogłem użyć skali logarytmicznej, ponieważ ilość niektórych składników
   wynosi 0. Lepsza od tego okazała się skala potęgowa np. 1/2, 1/3. Wybraliśmy
   1/3.
