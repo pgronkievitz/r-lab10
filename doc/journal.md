@@ -74,3 +74,16 @@
 - *Problem*: Dziennik nie był pisany na bieżąco.
   *Rozwiązanie*: system kontroli wersji pozwolił odtworzyć zmiany w całym
   projekcie. Możliwe stało się dopisanie nieistniejących wpisów.
+- *Problem*: Plik `main.R` stał się zbyt duży i nieczytelny.
+  *Rozwiązanie*: funkcje zostały wydzielone do osobnych plików. Każdy odpowiada
+  za inną, w większości przypadków niezależną część analizy danych. Osobnym
+  plikiem stało się także wczytanie danych i ich wstępne przetworzenie.
+  W pliku `main.R` aktualnie znajduje się sama analiza z użyciem osobnych
+  funkcji.
+- *Problem*: utrzymanie czytelnego i jednorodnego kodu stało się dość trudne.
+  *Rozwiązanie*: skonfigurowane zostało automatyczne formatowanie. Nie
+  ogranicza to do zera procesu formatowania, jednak znacznie go przyspiesza.
+- *Problem*: w przypadku niektórych funkcji łatwiej jest operować na ramce
+  pozostawionej w oryginalnym formacie.
+  *Rozwiązanie*: stworzona została funkcja, która automatycznie konwertuje
+  oryginalną ramkę na wersję szeroką.
