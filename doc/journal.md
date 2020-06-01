@@ -57,3 +57,6 @@
 - Pojawił się pomysł na plakat, w pliku main.R przeprowadzimy analizę danych a
   najciekawsze wnioski/wykresy wstawimy do plakatu. W plakacie skupimy się na
   stereotypach o jedzeniu z odrobiną humoru.
+- *Problem*: Dziennik nie był pisany na bieżąco. *Rozwiązanie*: system kontroli
+  wersji pozwolił odtworzyć zmiany w całym projekcie. Możliwe stało się
+  dopisanie nieistniejących wpisów.
