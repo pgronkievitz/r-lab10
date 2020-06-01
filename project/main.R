@@ -85,13 +85,3 @@ for(nutrient in levels(dataframe$nutrient)) {
 # Około 29 % produktów posiada więcej potasu
 # Ale, uwaga, okazuje się że produkt ten nie ma sobie równych jeżeli chodzi
 # o zawartość witaminy B-12.
-
-# Pierwszy rodzaj to Finlandia, Holandia, Szwecja.
-# Ryba z tych krajów zawiera najwięcej wapnia, witamin B, B1 oraz cynku.
-
-# Drugi to Niemcy, Francja i UK
-# 
-# 
-# Trzeci to Włochy
-# 
-#
