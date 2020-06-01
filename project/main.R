@@ -63,7 +63,7 @@ fct_count(wide_df$category, sort = TRUE)
 # wynikiem jest 'Meat and meat products'
 
 # Sprawdźmy zatem jakie dania znajdują się w tej kategorii
-wide_df[wide_df$category == "Fish, seafood, amphibians, reptiles and invertebrates",c(1,2)][1:10,]
+wide_df[wide_df$category == "Fish, seafood, amphibians, reptiles and invertebrates",c(1,2)][sample(1:1000, size=10),]
 # Jak można było się domyślić zawiera ona głownie ryby i owoce morza.
 # Przyjrzyjmy się zatem jednemu z produktów bezpośrednio i porównajmy go
 # w poszczególnych krajach.
@@ -84,4 +84,27 @@ for(nutrient in levels(dataframe$nutrient)) {
 # Około 26 % produktów posiada więcej fosforu
 # Około 29 % produktów posiada więcej potasu
 # Ale, uwaga, okazuje się że produkt ten nie ma sobie równych jeżeli chodzi
-# o zawartość witaminy B-12.
+# o zawartość witaminy B-12 - niewielę ponad 7 % produktów zawiera jej więcej.
+
+# Kolejną kategorią na liście są 'Meat and meat products'
+wide_df[wide_df$category == "Meat and meat products",c(1,2)][sample(1:1000, size=10),]
+compare_product(df = dataframe, prod_name = "Pig fresh meat")
+# Wykres po prawej stronie sugeruje, że znajduje się tu więcej składników niż,
+# w poprzednim produkcie (więcej elementów w każdym z pasków/krajów).
+# Podobnie jak poprzednio, składnikami wyróżniającymi się są fosfor i potas.
+# Taka zbieżność nie może być przypadkowa, być może te składniki występują
+# w większych ilościach od pozostałych. Sprawdzimy to licząc średnią zawartość
+# elementów w całej ramce.
+for(nutrient in levels(dataframe$nutrient)) {
+  cat(mean(dataframe[dataframe$nutrient == nutrient, "amount"]), nutrient, fill = TRUE)
+}
+# Jak widać nie myliliśmy się, fosfor i potas wyróżniają się, tuż za nimi są 
+# ze znacznie mniejszym wynikiem Magnez i Wapń, ale są to wyniki ponad 4 krotnie mniejsze.
+
+# Wróćmy teraz do analizy składu mięsa, zobaczmy jak jego wartości odżywcze prezentują
+# się na tle pozostałych produktów.
+for(nutrient in levels(dataframe$nutrient)) {
+  cat(compare_percent_of_nutrient(df = dataframe, prod_name = "Pig fresh meat", nutrient = nutrient), nutrient, fill = TRUE)
+}
+# Produkt ten wyróżnia się przede wszytkim zawartością witaminy B-1 (thiamin), mamy tu także przpadek
+# ekstremalny, ponieważ okazuje się że każdy produkt z ramki zawiera więcej witaminy K od tegoż mięsa.

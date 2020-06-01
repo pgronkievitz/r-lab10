@@ -1,4 +1,4 @@
-compare_product <- function(df, prod_name, save = FALSE) {
+compare_product <- function(df, prod_name, save = FALSE, log = "") {
     ## Porównuje dwa produkty
     #
     # prod_name - nazwa produktu z kategorii product_name
@@ -13,7 +13,7 @@ compare_product <- function(df, prod_name, save = FALSE) {
     prod <- df[df$product_name == prod_name, ]
     prod <- aggregate(amount ~ nutrient + country, prod, FUN = mean)
     bprod <- prod
-
+    prod$amount <- (prod$amount)^(1/3)
 
     ## Przygowanie pliku wyjściowego dla wykresu
     if (save) {
@@ -30,13 +30,16 @@ compare_product <- function(df, prod_name, save = FALSE) {
     layout(matrix(c(1, 2, 3, 3), ncol = 2, byrow = TRUE), heights = c(4, 1))
 
     ## Ustawienie marginesów dla wykresu i skali tekstu
-    par(mar = c(2, 2, 2, 2), cex = 1)
+    par(mar = c(0, 4, 2, 2), cex = 1)
 
     ## Wykres po lewej
     barplot(amount ~ nutrient + country, prod,
         beside = TRUE,
         col = rainbow(length(levels(df$nutrient))),
-        main = paste("Udział objętościowy składników w", prod_name)
+        main = paste("Udział objętościowy składników w", prod_name),
+        log = log,
+        xlab = "Kraj",
+        ylab = "Ilość składnika w skali ^(1/3)"
     )
 
     # Znormalizowanie danych
@@ -48,7 +51,10 @@ compare_product <- function(df, prod_name, save = FALSE) {
     barplot(amount ~ nutrient + country, prod,
         beside = FALSE,
         col = rainbow(length(levels(df$nutrient))),
-        main = paste("Istnienie danego składniku w", prod_name, "pomiędzy krajami europy.")
+        main = paste("Istnienie danego składniku w", prod_name, "pomiędzy krajami europy."),
+        log = log,
+        xlab = "Kraj",
+        ylab = "Ilość składnika w skali od 0 do 1"
     )
 
     ## Ustawienie marginesu legendy i skali tekstu
@@ -70,7 +76,7 @@ compare_product <- function(df, prod_name, save = FALSE) {
         dev.off()
     }
 }
-# compare_product(df = dataframe, prod_name = "Freshwater fish")
+compare_product(df = dataframe, prod_name = "Freshwater fish")
 
 compare_in_cat <- function(dataframe,
                            name,
