@@ -62,7 +62,7 @@ fct_count(wide_df$category, sort = TRUE)
 # 'Fish, seafood, amphibians, reptiles and invertebrates' drugą kategorią, z podobnym
 # wynikiem jest 'Meat and meat products'
 
-# Sprawdźmy zatem jakie dania znajdują się w tej kategorii
+## Sprawdźmy zatem jakie dania znajdują się w tej kategorii
 wide_df[wide_df$category == "Fish, seafood, amphibians, reptiles and invertebrates",c(1,2)][sample(1:1000, size=10),]
 # Jak można było się domyślić zawiera ona głownie ryby i owoce morza.
 # Przyjrzyjmy się zatem jednemu z produktów bezpośrednio i porównajmy go
@@ -86,7 +86,7 @@ for(nutrient in levels(dataframe$nutrient)) {
 # Ale, uwaga, okazuje się że produkt ten nie ma sobie równych jeżeli chodzi
 # o zawartość witaminy B-12 - niewielę ponad 7 % produktów zawiera jej więcej.
 
-# Kolejną kategorią na liście są 'Meat and meat products'
+## Kolejną kategorią na liście są 'Meat and meat products'
 wide_df[wide_df$category == "Meat and meat products",c(1,2)][sample(1:1000, size=10),]
 compare_product(df = dataframe, prod_name = "Pig fresh meat")
 # Wykres po prawej stronie sugeruje, że znajduje się tu więcej składników niż,
@@ -108,3 +108,25 @@ for(nutrient in levels(dataframe$nutrient)) {
 }
 # Produkt ten wyróżnia się przede wszytkim zawartością witaminy B-1 (thiamin), mamy tu także przpadek
 # ekstremalny, ponieważ okazuje się że każdy produkt z ramki zawiera więcej witaminy K od tegoż mięsa.
+
+## Na miejscu nr 3 znajduje się kategoria Vegetables and vegetable products.
+# Tutaj zaczniemy od sprawdzenia, który z krajów jest najbardziej vege.
+vege <- aggregate(product_name ~ country + category, dataframe, FUN=length)
+vege <- vege[vege$category == "Vegetables and vegetable products",c(1,3)]
+vege[order(vege$product_name, decreasing = TRUE),]
+# Można było się tego domyśleć, ale żaden kraj nie wyróżnia się pod względem
+# ilości produktów typu warzywa. Jednak pierwsze miejsce należy się Holandii.
+
+# Zobaczmy jakie produkty znajdują sie w tej katgorii
+wide_df[wide_df$category == "Vegetables and vegetable products",c(1,2)][sample(1:1000, size=10),]
+compare_product(df = dataframe, prod_name = "Tomatoes and similar-")
+# Spójrzmy na Włoskie pomidory po prawej stronie, wyróżniają się one tym,
+# że mają z pośród wszytkich pomidorów najwięcej witaminy B-12.
+for(nutrient in levels(dataframe$nutrient)) {
+  cat(compare_percent_of_nutrient(df = dataframe, prod_name = "Tomatoes and similar-", nutrient = nutrient), nutrient, fill = TRUE)
+}
+# Ale tutaj nasz zapał został ostudzony, ponieważ okazało się, że pomidory mają najmniej witaminy B-12
+# wśród wszytkich dostępnych produktów. Pomidory, nie są w żadnej kategorii w top 10%.
+
+
+
