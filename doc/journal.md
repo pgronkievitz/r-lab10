@@ -89,18 +89,19 @@
   stanowi unikalny index.
 - Podczas porównywania produktów niektóre składniki nie są wyraźnie widoczne na
   wykresach. Problem ich normalizacji nadal nie został rozwiązany.
-- Udało się rozwiązać problem niewidoczności danych na wykreasch. Od teraz 
+- Udało się rozwiązać problem niewidoczności danych na wykreasch. Od teraz
   funkcja rysująca wykres po wyselekcjonowaniu danych, normalizuje je względem
-  każdego ze składników. W ten sposób każdy ze składników reprezentowany jest
-  w skali od 0 do 1 względem pozostałych. 0 - składnik nie występuje, 1 
-  produkt zawiera najwięcej danego składnika w porównaniu z tym samym produktem
-  z innych krajów.
-- _Problem_:Dane po znormalizowaniu nie oddają udziału objętościowego 
-  poszczególnych składników. _Rozwiązanie_: Z dwóch generowanych wykresów, wykres
-  po lewej zawiera dane przed normalizacją, a po prawej po. W ten sposób widać
-  zarówno udział składników jak i ich objętość.
-- _Problem_: Powrócił problem kolorowania wykresów. Przez braki danych, wektor 
-  kolorów zawija się po złych wierszach. _Rozwiązanie_: cast i melt ramki danych.
-  Najpierw zamieniam jedną kolumnę typu "Factor" na wiele kolumn (format wide),
-  a następnie przywracam ją do pierwotnej formy. W ten sposób każdy produkt uzyska
-  każdy składnik (braki uzupełnia się zerami). Teraz zawijanie działa prawidłowo.
+  każdego ze składników. W ten sposób każdy ze składników reprezentowany jest w
+  skali od 0 do 1 względem pozostałych. 0 - składnik nie występuje, 1 produkt
+  zawiera najwięcej danego składnika w porównaniu z tym samym produktem z innych
+  krajów.
+- _Problem_:Dane po znormalizowaniu nie oddają udziału objętościowego
+  poszczególnych składników. _Rozwiązanie_: Z dwóch generowanych wykresów,
+  wykres po lewej zawiera dane przed normalizacją, a po prawej po. W ten sposób
+  widać zarówno udział składników jak i ich objętość.
+- _Problem_: Powrócił problem kolorowania wykresów. Przez braki danych, wektor
+  kolorów zawija się po złych wierszach. _Rozwiązanie_: cast i melt ramki
+  danych. Najpierw zamieniam jedną kolumnę typu "Factor" na wiele kolumn (format
+  wide), a następnie przywracam ją do pierwotnej formy. W ten sposób każdy
+  produkt uzyska każdy składnik (braki uzupełnia się zerami). Teraz zawijanie
+  działa prawidłowo.

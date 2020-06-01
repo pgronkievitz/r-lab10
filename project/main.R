@@ -69,11 +69,11 @@ wide_df[wide_df$category == "Fish, seafood, amphibians, reptiles and invertebrat
 # w poszczególnych krajach.
 compare_product(df = dataframe, prod_name = "Freshwater fish")
 # Powyższy wykres zawiera dosyć dużo informacji, więc zaleca się otworzenie go
-# w osobnym oknie. 
+# w osobnym oknie.
 
 # Możemy na nim zauważyć, że 'Freshwater fish' dzieli się na 3
 # rodzaje różniące się względem ilości poszczególnych składników w nich zawartych.
-# Jednak jak wynika z wykresu po lewej wspólną cechą charakterystyczną tego 
+# Jednak jak wynika z wykresu po lewej wspólną cechą charakterystyczną tego
 # produktu jest wysoka zawartośc fosforu i potasu.
 # Sprawdzmy zatem jak ta warość prezentuje się na tle pozostałych produktów.
 # Aby to zrobić obliczymy procent produktów który ma większą zawartość
@@ -85,3 +85,16 @@ for(nutrient in levels(dataframe$nutrient)) {
 # Około 29 % produktów posiada więcej potasu
 # Ale, uwaga, okazuje się że produkt ten nie ma sobie równych jeżeli chodzi
 # o zawartość witaminy B-12.
+<<<<<<< HEAD
+=======
+
+# Pierwszy rodzaj to Finlandia, Holandia, Szwecja.
+# Ryba z tych krajów zawiera najwięcej wapnia, witamin B, B1 oraz cynku.
+
+# Drugi to Niemcy, Francja i UK
+#
+#
+# Trzeci to Włochy
+#
+#
+>>>>>>> 3902f4b3c0e70b5f01728e059a4e6103e82b007a
