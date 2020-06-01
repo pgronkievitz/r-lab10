@@ -165,8 +165,14 @@ for(nutrient in levels(dataframe$nutrient)) {
 for(category in levels(dataframe$category)) {
   cat(mean(dataframe[dataframe$category == category & dataframe$nutrient == "Calcium (Ca)", "amount"]), category, fill = TRUE)
 }
+plot_top_products_with_nutrient(nutrient_name = "Calcium (Ca)", save = FALSE, nest_level = 3)
 # Na szczęście mogę śmiało powiedzieć, że teza została potwierdzona. Produkty mleczne zawierają znacznie
 # więcej wapnia od innych i to średnio około dwukrotnie. 
 
 # Na tym zakończymy porównywanie kategorii i wrócimy do korzeni.
-
+# Zobaczmy w jakie składniki występują najczesciej w jakich kategoriach.
+# Uwaga ten krok wymaga folderu 'plots' w cwd.
+for(nutrient in levels(dataframe$nutrient)) {
+  plot_top_products_with_nutrient(nutrient_name = nutrient, save = TRUE, nest_level = 3)
+}
+# Do folderu plots zostały wygenerowane wykresy dla każdego ze składników.

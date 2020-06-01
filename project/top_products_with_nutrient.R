@@ -20,7 +20,7 @@ top_products_with_nutrient <- function(df, nutrient_name, nest_level = 2) {
   return(dat)
 }
 
-k <- top_products_with_nutrient(wide_df, 'Alpha-tocopherol')
+#k <- top_products_with_nutrient(wide_df, 'Alpha-tocopherol')
 
 
 plot_top_products_with_nutrient <- function(nutrient_name,n_of_prod=10, save=FALSE, nest_level = 2) {
@@ -68,8 +68,6 @@ plot_top_products_with_nutrient <- function(nutrient_name,n_of_prod=10, save=FAL
     dev.off()
   }
 
-  # Przywrócenie wartości domyślnych wykresów
-  par(def.par)
 }
 
 #plot_top_products_with_nutrient(nutrient_name = "Calcium (Ca)", save = FALSE, nest_level = 3)
