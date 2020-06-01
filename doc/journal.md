@@ -89,3 +89,9 @@
   stanowi unikalny index.
 - Podczas porównywania produktów niektóre składniki nie są wyraźnie widoczne na
   wykresach. Problem ich normalizacji nadal nie został rozwiązany.
+- Udało się rozwiązać problem niewidoczności danych na wykreasch. Od teraz 
+  funkcja rysująca wykres po wyselekcjonowaniu danych, normalizuje je względem
+  każdego ze składników. W ten sposób każdy ze składników reprezentowany jest
+  w skali od 0 do 1 względem pozostałych. 0 - składnik nie występuje, 1 
+  produkt zawiera najwięcej danego składnika w porównaniu z tym samym produktem
+  z innych krajów.
