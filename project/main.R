@@ -98,7 +98,7 @@ compare_product(df = dataframe, prod_name = "Pig fresh meat")
 for(nutrient in levels(dataframe$nutrient)) {
   cat(mean(dataframe[dataframe$nutrient == nutrient, "amount"]), nutrient, fill = TRUE)
 }
-# Jak widać nie myliliśmy się, fosfor i potas wyróżniają się, tuż za nimi są 
+# Jak widać nie myliliśmy się, fosfor i potas wyróżniają się, tuż za nimi są
 # ze znacznie mniejszym wynikiem Magnez i Wapń, ale są to wyniki ponad 4 krotnie mniejsze.
 
 # Wróćmy teraz do analizy składu mięsa, zobaczmy jak jego wartości odżywcze prezentują
@@ -167,7 +167,7 @@ for(category in levels(dataframe$category)) {
 }
 plot_top_products_with_nutrient(nutrient_name = "Calcium (Ca)", save = FALSE, nest_level = 3)
 # Na szczęście mogę śmiało powiedzieć, że teza została potwierdzona. Produkty mleczne zawierają znacznie
-# więcej wapnia od innych i to średnio około dwukrotnie. 
+# więcej wapnia od innych i to średnio około dwukrotnie.
 
 # Na tym zakończymy porównywanie kategorii i wrócimy do korzeni.
 # Zobaczmy w jakie składniki występują najczesciej w jakich kategoriach.
