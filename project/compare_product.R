@@ -124,7 +124,7 @@ compare_percent_of_nutrient <- function(df, prod_name, nutrient) {
   # prod_name - nazwa produktu
   # nutrient - nazwa składnika do obliczania procentów
   
-  sred <- mean(dataframe[dataframe$product_name == prod_name & dataframe$nutrient == nutrient])
+  sred <- mean(dataframe[dataframe$product_name == prod_name & dataframe$nutrient == nutrient, "amount"])
   
   
   return(dim(dataframe[dataframe$nutrient == nutrient & dataframe$amount >= sred,])[1] / dim(dataframe[dataframe$nutrient == nutrient,])[1])

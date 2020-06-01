@@ -74,22 +74,17 @@ compare_product(df = dataframe, prod_name = "Freshwater fish")
 # Możemy na nim zauważyć, że 'Freshwater fish' dzieli się na 3
 # rodzaje różniące się względem ilości poszczególnych składników w nich zawartych.
 # Jednak jak wynika z wykresu po lewej wspólną cechą charakterystyczną tego 
-# produktu jest wysoka zawartośc fosforu i patasu.
+# produktu jest wysoka zawartośc fosforu i potasu.
 # Sprawdzmy zatem jak ta warość prezentuje się na tle pozostałych produktów.
 # Aby to zrobić obliczymy procent produktów który ma większą zawartość
-# fosforu i cynku.
-
-# Dla porównania obliczymy średnią ilość fosforu i potasu w tym produkcie.
-sred_fosfor <- mean(dataframe[dataframe$product_name == "Freshwater fish" & dataframe$nutrient == "Phosphorus (P)","amount"])
-sred_potas <- mean(dataframe[dataframe$product_name == "Freshwater fish" & dataframe$nutrient == "Potassium (K)","amount"])
-
+# fosforu i potasu.
+for(nutrient in levels(dataframe$nutrient)) {
+  cat(compare_percent_of_nutrient(df = dataframe, prod_name = "Freshwater fish", nutrient = nutrient), nutrient, fill = TRUE)
+}
 # Około 26 % produktów posiada więcej fosforu
-dim(dataframe[dataframe$nutrient == "Phosphorus (P)" & dataframe$amount >= sred_fosfor,])[1] / dim(dataframe[dataframe$nutrient == "Phosphorus (P)",])[1]
-
 # Około 29 % produktów posiada więcej potasu
-dim(dataframe[dataframe$nutrient == "Potassium (K)" & dataframe$amount >= sred_potas,])[1] / dim(dataframe[dataframe$nutrient == "Potassium (K)",])[1]
-
-
+# Ale, uwaga, okazuje się że produkt ten nie ma sobie równych jeżeli chodzi
+# o zawartość witaminy B-12.
 
 # Pierwszy rodzaj to Finlandia, Holandia, Szwecja.
 # Ryba z tych krajów zawiera najwięcej wapnia, witamin B, B1 oraz cynku.
