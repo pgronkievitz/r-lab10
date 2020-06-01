@@ -1,5 +1,8 @@
 # Dziennik zadań
 
+- Stworzone zostało repozytorium z kodem. Znacznie ułatwia ono pracę w zespole.
+  Użyty został system wersjonowania GIT, ponieważ jest najpopularniejsze i
+  najprostsze w obsłudze.
 - Wprowadzenie podstawowych danych.
 - Dane są w formacie xslx z pomocą biblioteki udało nam się je załadować.
 - Z danych usunięte zostały niepotrzebne kolumny zawierające identyfikatory
@@ -34,10 +37,10 @@
   Rozwiązanie: ustawienie warości `par(las = 1)`
 - Problem: nazwy produktów są zbyt długie i wychodzą poza wykres. Rozwiązanie:
   `strtrim(top$product_name, 20)` przycinam je do 20 znaków.
-- Problem: `barplot` gdy rysuje zaczyna od końca `data.frame` tzn. gdy dane
+- Problem: `barplot` gdy rysuje zaczyna od końca `data.frame` tzn. Gdy dane
   posortowane były malejąco na spodzie wykresu znajdowała się wartość
   maksymalna. Rozwiązanie: odwracam listę podawaną w argumentach z pomocą `rev`.
-- W celu porównania ze sobą danych przeskalowaliśmy je do wspólnej jednoski.
+- W celu porównania ze sobą danych przeskalowaliśmy je do wspólnej jednooki.
   Problemem stało się to że na wykresach nie widać niektórych składników. W
   przypadku niewyskalowania niektóre składniki dominują całkowicie wykresy.
   Prawdopodobnym rozwiązaniem będzie znormalizowanie danych, wykresy nadal będą
