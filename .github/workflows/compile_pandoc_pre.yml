@@ -13,9 +13,6 @@ jobs:
         - uses: docker://pandoc/latex:2.9
           with:
               args: pandoc -d pandoc_def.yml
-        - uses: docker://pandoc/latex:2.9
-          with:
-              args: pandoc -d poster_pandoc.yml
         - uses: meeDamian/github-release@2.0
           with:
             tag: ${{ env.RELEASE_TAG }}
