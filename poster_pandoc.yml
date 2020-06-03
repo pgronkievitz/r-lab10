@@ -1,9 +1,9 @@
 from: markdown
 to: pdf
 
-output-file: release/main.pdf
+output-file: release/poster.pdf
 input-files:
-  - doc/journal.md
+  - doc/poster.md
 standalone: true
 self-contained: true
 variables:
@@ -14,7 +14,7 @@ metadata:
     - Piotr Krawiec (164157)
   lang: pl
   title: Analiza artukułów spożywczych w europie
-  papersize: a4
+  papersize: a3
 resource-path: ["doc/res"]
 tab-stop: 4
 listings: true
