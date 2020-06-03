@@ -8,6 +8,14 @@ library("ggplot2")
 dataframe <- read.xlsx("Food_composition_dataset.xlsx")
 dim(dataframe) # 236994x12 dataset
 
+df_long_to_wide <- function(df) {
+    return(reshape2::dcast(
+        dataframe,
+        country + product_name + category + subcategory + subsubcategory ~ nutrient,
+        value.var = "amount",
+        sum
+    ))
+}
 ## filter out interesting columns
 interesting_cols <- c(
     "COUNTRY",
@@ -70,16 +78,7 @@ numeric_cols <- c(
 # Cast and melt df to fill missing rows
 dataframe <- df_long_to_wide(dataframe)
 dataframe <- melt(dataframe)
-colnames(dataframe)[6:7] = c("nutrient", "amount")
+colnames(dataframe)[6:7] <- c("nutrient", "amount")
 
 
 dataframe[sample(nrow(dataframe), 10), ]
-
-df_long_to_wide <- function(df) {
-    return(reshape2::dcast(
-        dataframe,
-        country + product_name + category + subcategory + subsubcategory ~ nutrient,
-        value.var = "amount",
-        sum
-    ))
-}
