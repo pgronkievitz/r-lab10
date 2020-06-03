@@ -2,3 +2,4 @@
 **/*.pdf
 **/*.xcf
 release/
+project/plots/
