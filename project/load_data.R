@@ -4,6 +4,7 @@
 library("openxlsx")
 library("tidyverse")
 library("ggplot2")
+library("reshape2")
 
 dataframe <- read.xlsx("Food_composition_dataset.xlsx")
 dim(dataframe) # 236994x12 dataset
