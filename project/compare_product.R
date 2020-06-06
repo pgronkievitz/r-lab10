@@ -75,6 +75,9 @@ compare_product <- function(df, prod_name, save = FALSE, log = "") {
     if (save) {
         dev.off()
     }
+    
+    # Przywrócenie layoutu plotów
+    par(mfrow=c(1,1))
 }
 #compare_product(df = dataframe, prod_name = "Freshwater fish")
 
